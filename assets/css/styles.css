@@ -1,16 +1,8 @@
-/*   
- * Template Name: Developer - Responsive Website Template for Developers
- * Version: 1.5
- * Author: Xiaoying Riley
- * Twitter: @3rdwave_themes
- * License: Creative Commons Attribution 3.0 License
- * Website: http://themes.3rdwavemedia.com/
-*/
 /* ======= Base ======= */
 body {
   font-family: 'Lato', arial, sans-serif;
   color: #434343;
-  background: #DAE3E7;
+  background: #dae3e7;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,7 +18,7 @@ h6 {
   color: #778492;
 }
 a {
-  color: #3AAA64;
+  color: #3aaa64;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -74,8 +66,8 @@ a.btn-cta-primary:hover,
 }
 a.btn-cta-secondary,
 .btn-cta-secondary {
-  background: #479FC8;
-  border: 1px solid #479FC8;
+  background: #479fc8;
+  border: 1px solid #479fc8;
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
@@ -90,7 +82,7 @@ a.btn-cta-secondary:hover,
   color: #32383e;
 }
 .label-theme {
-  background: #3AAA64;
+  background: #3aaa64;
   font-size: 12px;
 }
 a.dotted-link {
@@ -126,6 +118,7 @@ iframe {
 }
 .header .profile-image {
   margin-right: 30px;
+  max-width: 200px;
 }
 .header .profile-content .name {
   color: #49515a;
@@ -234,7 +227,7 @@ iframe {
   position: relative;
 }
 .latest .featured-image .text {
-  background: #3AAA64;
+  background: #3aaa64;
   color: #fff;
 }
 .latest .featured-image .ribbon {
@@ -257,7 +250,7 @@ iframe {
   text-align: center;
   text-transform: uppercase;
   color: #fff;
-  background-color: #479FC8;
+  background-color: #479fc8;
   -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
   -moz-transform: rotate(45deg) translate3d(0, 0, 0);
   -ms-transform: rotate(45deg) translate3d(0, 0, 0);
@@ -305,17 +298,17 @@ iframe {
   line-height: 1.5;
 }
 .experience .item .title .place {
-  color: #999;
+  color: #999999;
   font-weight: normal;
 }
 .experience .item .title .place a {
-  color: #999;
+  color: #999999;
 }
 .experience .item .title .place a:hover {
   color: #666666;
 }
 .experience .item .title .year {
-  color: #999;
+  color: #999999;
   font-weight: normal;
 }
 /* Git section */
@@ -391,7 +384,7 @@ iframe {
   margin-bottom: 0;
 }
 .testimonials .item .quote {
-  color: #666;
+  color: #666666;
   font-size: 16px;
   border-left-color: #9fdeb7;
   margin-bottom: 15px;
@@ -410,7 +403,7 @@ iframe {
   font-weight: 600;
 }
 .testimonials .item .source .title {
-  color: #999;
+  color: #999999;
 }
 /* Education section */
 .education .item {
@@ -426,7 +419,7 @@ iframe {
 .education .item .university {
   font-family: "Lato", arial, sans-serif;
   font-size: 13px;
-  color: #999;
+  color: #999999;
   font-weight: 600;
   padding-left: 25px;
 }
@@ -442,7 +435,7 @@ iframe {
   color: #778492;
 }
 .languages .item .level {
-  color: #999;
+  color: #999999;
 }
 .languages .item:last-child {
   margin-bottom: 0;

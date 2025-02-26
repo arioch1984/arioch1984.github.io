@@ -283,7 +283,7 @@ section
 {
 	font-size: 36px;
 	font-weight: 800;
-	color: #100f3a;
+	color: black;
 	margin-right: 48px;
 	margin-top: -5px;
 	-webkit-transition: all 200ms ease;
@@ -310,7 +310,7 @@ section
 }
 .main_nav ul li
 {
-	background: #100f3a;
+	background: black;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
@@ -371,7 +371,7 @@ section
 .header_button:hover,
 .header_button_2:hover
 {
-	background: #100f3a;
+	background: black;
 }
 .header_button a,
 .header_button_2 a
@@ -392,7 +392,7 @@ section
 	right: 0;
 	width: 55px;
 	height: 55px;
-	background: #100f3a;
+	background: black;
 	pointer-events: none;
 }
 .content_container
@@ -475,7 +475,7 @@ section
 	font-size: 16px;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #100f3a;
+	color: black;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -499,7 +499,7 @@ section
 	font-size: 16px;
 	text-transform: uppercase;
 	font-weight: 700;
-	color: #100f3a;
+	color: black;
 	letter-spacing: 0.05em;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -527,7 +527,7 @@ section
 {
 	width: 473px;
 	height: 100%;
-	background: #100f3a;
+	background: black;
 }
 .general_info_image
 {
@@ -643,7 +643,7 @@ section
 {
 	font-size: 72px;
 	font-weight: 800;
-	color: #100f3a;
+	color: black;
 	line-height: 0.75;
 	margin-top: 15px;
 	margin-left: -4px;
@@ -699,7 +699,7 @@ section
 {
 	font-size: 24px;
 	font-weight: 700;
-	color: #100f3a;
+	color: black;
 	line-height: 0.75;
 }
 .exp_subtitle

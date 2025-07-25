@@ -67,8 +67,9 @@
 								<div class="container">
 									<h3>Le Mie Competenze</h3>
 									<p>La mia esperienza tecnica si estende su vari domini dello sviluppo software, con un focus sulla creazione di soluzioni efficienti e user-friendly. Le competenze sono ordinate per numero di endorsement ricevuti su LinkedIn.</p>
-									
+
 <style>
+/* Skill list styling */
 .skill-list {
     list-style: none;
     padding: 0;
@@ -96,10 +97,14 @@
     height: 8px;
     overflow: hidden;
 }
+/* Skill bar with animation properties */
 .skill-bar {
     height: 100%;
     background-color: #4acaa8;
     border-radius: 4px;
+    width: 0; /* Start with width 0 */
+    transition: width 2s cubic-bezier(0.22, 0.61, 0.36, 1); /* Enhanced transition with cubic-bezier for more natural motion */
+    will-change: width; /* Hint to browser to optimize animation */
 }
 </style>
 

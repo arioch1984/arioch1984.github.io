@@ -156,4 +156,121 @@
 			}
 		});
 
+	/**
+	 * Skill Bars Animation
+	 * 
+	 * This code implements a scroll-based animation for the skill bars in the "Le Mie Competenze" section.
+	 * When the section enters the viewport, the skill bars gradually fill up to their original width.
+	 * When the section leaves the viewport, the skill bars reset to zero width.
+	 * 
+	 * The animation uses CSS transitions for smooth effects and the scrollex plugin to detect
+	 * when the section enters and leaves the viewport.
+	 */
+
+	// Store original skill bar widths on page load
+	$(window).on('load', function() {
+		// Initialize skill bars
+		initSkillBars();
+
+		// Check if skills section is already in viewport on page load
+		// and trigger animation if needed
+		setTimeout(function() {
+			var $skillsSection = $('#two');
+			var windowHeight = $(window).height();
+			var scrollTop = $(window).scrollTop();
+			var sectionTop = $skillsSection.offset().top;
+			var sectionHeight = $skillsSection.height();
+
+			// If skills section is in viewport on page load, animate the bars
+			if (
+				(sectionTop < (scrollTop + windowHeight)) && 
+				((sectionTop + sectionHeight) > scrollTop)
+			) {
+				console.log('Skills section in viewport on page load, triggering animation');
+				animateSkillBars();
+			}
+		}, 500);
+	});
+
+	// Function to initialize skill bars
+	function initSkillBars() {
+		$('#two .skill-bar').each(function() {
+			var $this = $(this);
+
+			// Get the original width from the inline style attribute
+			// This handles both percentage and pixel values
+			var originalWidth = $this.attr('style') ? 
+				($this.attr('style').indexOf('width:') > -1 ? 
+					$this.attr('style').split('width:')[1].split(';')[0].trim() : 
+					$this.css('width')) : 
+				$this.css('width');
+
+			// Store the original width in a data attribute for later use
+			// and set initial width to 0 to prepare for animation
+			$this.data('original-width', originalWidth);
+			$this.css('width', '0');
+
+			// Log for debugging
+			console.log('Skill bar original width:', originalWidth);
+		});
+	}
+
+	// Function to animate skill bars
+	function animateSkillBars() {
+		$('#two .skill-bar').each(function() {
+			var $this = $(this);
+			var originalWidth = $this.data('original-width');
+
+			console.log('Animating skill bar to width:', originalWidth);
+
+			// Clear any existing timeouts to prevent conflicts
+			if ($this.data('animation-timeout')) {
+				clearTimeout($this.data('animation-timeout'));
+			}
+
+			// Add a delay that increases for each skill bar to create a cascading effect
+			var index = $this.parent().parent().index();
+			var delay = 200 + (index * 150); // 200ms base delay + 150ms per item
+
+			var timeout = setTimeout(function() {
+				// Force browser to recalculate layout before animation
+				$this.css('width', '0');
+
+				// Trigger reflow to ensure animation works
+				$this[0].offsetHeight;
+
+				// Apply the original width to trigger the animation
+				$this.css('width', originalWidth);
+			}, delay);
+
+			// Store the timeout ID for potential clearing
+			$this.data('animation-timeout', timeout);
+		});
+	}
+
+	// Configure scrollex for the skills section
+	$('#two').scrollex({
+		// Trigger when any part of the section is in view
+		mode: 'default',
+		// Define a larger trigger zone (5% from top and bottom of viewport)
+		top: '5%',
+		bottom: '5%',
+
+		// When the section enters the viewport
+		enter: function() {
+			console.log('Skills section entered viewport');
+
+			// Use the centralized animation function
+			animateSkillBars();
+		},
+
+		// When the section leaves the viewport
+		leave: function() {
+			console.log('Skills section left viewport');
+
+			// Reset all skill bars to zero width
+			$('#two .skill-bar').css('width', '0');
+		}
+	});
+
 })(jQuery);

@@ -1,92 +1,64 @@
-// Theme Switch Functionality
-(function($) {
-    // Function to set theme
-    function setTheme(themeName) {
-        document.documentElement.setAttribute('data-theme', themeName);
-        localStorage.setItem('theme', themeName);
-        updateCheckbox(themeName);
+// Split Layout Interaction
+(function ($) {
+
+    const $body = $('body');
+    const $sides = $('.split-side');
+    const $closeBtn = $('<button class="close-btn">&times;</button>');
+
+    // Add close button to body
+    $body.append($closeBtn);
+
+    // Handle Side Click / Toggle
+    function activateSide(side) {
+        // If already active, do nothing
+        if ($('#side-' + side).hasClass('active')) return;
+
+        // Set body state
+        $body.addClass('mode-active');
+
+        // Reset classes
+        $sides.removeClass('active inactive');
+
+        // Set active/inactive
+        $('#side-' + side).addClass('active');
+
+        // The other side becomes inactive
+        const otherSide = side === 'professional' ? 'personal' : 'professional';
+        $('#side-' + otherSide).addClass('inactive');
     }
 
-    // Function to toggle between light and dark themes
-    function toggleTheme() {
-        if (localStorage.getItem('theme') === 'dark') {
-            setTheme('light');
-        } else {
-            setTheme('dark');
-        }
+    function resetLayout() {
+        $body.removeClass('mode-active');
+        $sides.removeClass('active inactive');
     }
 
-    // Function to update checkbox state and label
-    function updateCheckbox(themeName) {
-        const checkbox = document.getElementById('checkbox');
-        const themeLabel = document.querySelector('.theme-label');
+    // Event Listeners
 
-        if (checkbox) {
-            checkbox.checked = themeName === 'dark';
+    // Click on side (desktop)
+    $sides.on('click', function (e) {
+        // Only activate if not already active
+        if (!$(this).hasClass('active')) {
+            const side = $(this).attr('id').replace('side-', '');
+            activateSide(side);
         }
+    });
 
-        if (themeLabel) {
-            themeLabel.textContent = themeName === 'dark' ? 'Dark' : 'Light';
-        }
-    }
+    // Click on toggle buttons (mobile/desktop)
+    $('.btn-toggle').on('click', function (e) {
+        e.stopPropagation(); // Prevent bubbling to side click
+        const target = $(this).data('target');
+        activateSide(target);
+    });
 
-    // Function to get system preference
-    function getSystemPreference() {
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    // Close button
+    $closeBtn.on('click', function () {
+        resetLayout();
+    });
 
-    // Function to set cookie
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    // Function to get cookie
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    // Initialize theme
-    $(document).ready(function() {
-        // Check for saved theme preference or get from browser
-        const savedTheme = getCookie('theme') || localStorage.getItem('theme');
-
-        if (savedTheme) {
-            // If we have a saved preference, use it
-            setTheme(savedTheme);
-        } else {
-            // Otherwise, use system preference
-            const systemPreference = getSystemPreference();
-            setTheme(systemPreference);
-        }
-
-        // Set up event listener for theme switch
-        $('#checkbox').change(function() {
-            toggleTheme();
-            // Save preference in cookie (valid for 365 days)
-            setCookie('theme', localStorage.getItem('theme'), 365);
-        });
-
-        // Listen for system preference changes
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                // Only change theme if user hasn't set a preference
-                if (!getCookie('theme') && !localStorage.getItem('theme')) {
-                    setTheme(e.matches ? 'dark' : 'light');
-                }
-            });
+    // Keyboard 'Esc' to close
+    $(document).on('keydown', function (e) {
+        if (e.key === "Escape" && $body.hasClass('mode-active')) {
+            resetLayout();
         }
     });
 

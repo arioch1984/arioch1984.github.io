@@ -193,6 +193,14 @@ ul {
 	padding-top: 5rem;
 }
 
+.split-side.active .intro,
+.split-side.active .details {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
 .split-side.active .details {
 	display: block;
 	opacity: 1;

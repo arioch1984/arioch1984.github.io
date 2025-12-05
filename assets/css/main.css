@@ -305,8 +305,8 @@ body.mode-active .close-btn {
 	}
 
 	/* Mobile Active State - Natural Scrolling */
-	body.mode-active,
-	body.mode-active html {
+	html.mode-active,
+	body.mode-active {
 		overflow-y: auto;
 		/* Allow body scroll */
 		height: auto;

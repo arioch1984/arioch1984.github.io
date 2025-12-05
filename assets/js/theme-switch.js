@@ -13,8 +13,9 @@
         // If already active, do nothing
         if ($('#side-' + side).hasClass('active')) return;
 
-        // Set body state
+        // Set body and html state
         $body.addClass('mode-active');
+        $('html').addClass('mode-active');
 
         // Reset classes
         $sides.removeClass('active inactive');
@@ -29,6 +30,7 @@
 
     function resetLayout() {
         $body.removeClass('mode-active');
+        $('html').removeClass('mode-active');
         $sides.removeClass('active inactive');
     }
 

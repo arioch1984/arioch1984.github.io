@@ -321,8 +321,8 @@ body.mode-active .close-btn {
 	.split-side.active {
 		height: auto;
 		min-height: 100vh;
-		overflow: visible;
-		/* Let content flow */
+		overflow: hidden;
+		/* Clip scaled background */
 	}
 
 	.split-side.active .content {

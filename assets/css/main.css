@@ -325,6 +325,13 @@ body.mode-active .close-btn {
 		/* Let content flow */
 	}
 
+	.split-side.active .content {
+		height: auto;
+		overflow: visible;
+		display: block;
+		/* Ensure it stacks */
+	}
+
 	.split-side.inactive {
 		height: 0;
 		overflow: hidden;

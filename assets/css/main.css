@@ -180,8 +180,8 @@ ul {
 .split-side.active {
 	width: 100%;
 	cursor: default;
-	overflow-y: auto;
-	/* Allow scrolling when active */
+	overflow: hidden;
+	/* Keep container fixed */
 }
 
 .split-side.active .bg-image {
@@ -191,6 +191,10 @@ ul {
 .split-side.active .content {
 	justify-content: flex-start;
 	padding-top: 5rem;
+	overflow-y: auto;
+	/* Scroll content only */
+	height: 100%;
+	width: 100%;
 }
 
 .split-side.active .intro,
@@ -300,12 +304,30 @@ body.mode-active .close-btn {
 		transition: height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 	}
 
+	/* Mobile Active State - Natural Scrolling */
+	body.mode-active,
+	body.mode-active html {
+		overflow-y: auto;
+		/* Allow body scroll */
+		height: auto;
+	}
+
+	body.mode-active #split-container {
+		height: auto;
+		display: block;
+		/* Stack block */
+	}
+
 	.split-side.active {
-		height: 100%;
+		height: auto;
+		min-height: 100vh;
+		overflow: visible;
+		/* Let content flow */
 	}
 
 	.split-side.inactive {
-		height: 0%;
+		height: 0;
+		overflow: hidden;
 	}
 
 	h1 {
